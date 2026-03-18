@@ -53,7 +53,7 @@ export default function Login() {
         <button type="submit">Login</button>
       </form>
 
-      <p>Try: michaelw / michaelwpass</p>
+      <p>Try: oliviaw/ oliviawpass</p>
     </div>
   );
 }
