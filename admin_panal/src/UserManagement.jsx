@@ -120,6 +120,26 @@ export default function UserManagement() {
         )}
       </div>
 
+      {/* PAGINATION */}
+      <div style={{ marginTop: "20px" }}>
+        <button
+          disabled={page === 0}
+          onClick={() => setPage((p) => p - 1)}
+        >
+          Prev
+        </button>
+
+        <span style={{ margin: "0 10px" }}>
+          Page {page + 1} / {totalPages || 1}
+        </span>
+
+        <button
+          disabled={page >= totalPages - 1}
+          onClick={() => setPage((p) => p + 1)}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
