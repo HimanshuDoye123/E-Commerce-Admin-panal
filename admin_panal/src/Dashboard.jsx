@@ -4,6 +4,7 @@ import { useDashboardData } from "./useDashboardData";
 import StatsCard from "./StatsCard";
 import ChartComponent from "./ChartComponent";
 import { useNavigate } from "react-router-dom";
+import "./Dashboard.css";
 
 export default function Dashboard() {
   const { user, logout } = useContext(AuthContext);
@@ -17,28 +18,33 @@ export default function Dashboard() {
     navigate("/");
   };
 
+  const goToUsers = () => {
+    navigate("/users");
+  };
+
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Dashboard</h2>
-      <p>Welcome {user?.firstName}</p>
+    <div className="dashboard-container">
+      <div className="top-actions">
+        <button className="user-btn" onClick={goToUsers}>
+          User Management
+        </button>
+        <button className="logout-btn" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
 
-      <button onClick={handleLogout}>Logout</button>
+      <h2 className="dashboard-title">Dashboard</h2>
+      <p className="welcome-text">Welcome {user?.firstName}</p>
 
-      {/* Cards */}
-      <div style={{
-        display: "flex",
-        gap: "20px",
-        marginTop: "20px",
-        flexWrap: "wrap",
-        justifyContent: "center"
-      }}>
+      {/* CARDS */}
+      <div className="stats-wrapper">
         <StatsCard title="Total Price" value={totalPrice} />
         <StatsCard title="Total Quantity" value={totalQuantity} />
         <StatsCard title="Discounted Total" value={totalDiscounted} />
       </div>
 
-      {/* Chart */}
-      <div style={{ marginTop: "40px" }}>
+      {/* CHART */}
+      <div className="chart-container">
         <ChartComponent products={products} />
       </div>
     </div>
