@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "./AuthContext";
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -13,14 +14,8 @@ export default function Login() {
 
     const res = await fetch("https://dummyjson.com/user/login", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username,
-        password,
-        expiresInMins: 30,
-      }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password, expiresInMins: 30 }),
     });
 
     const data = await res.json();
@@ -34,26 +29,45 @@ export default function Login() {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "100px" }}>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <br /><br />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <br /><br />
-        <button type="submit">Login</button>
-      </form>
+    <div className="loginPage">
+      <div className="loginCard">
+        <h2 className="loginTitle">Welcome</h2>
+        <p className="loginSubtitle">Sign in to continue</p>
 
-      <p>Try: oliviaw/ oliviawpass</p>
+        <form onSubmit={handleLogin} className="loginForm">
+          <label className="loginLabel">
+            Username
+            <input
+              className="loginInput"
+              placeholder="Enter your username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              autoComplete="username"
+            />
+          </label>
+
+          <label className="loginLabel">
+            Password
+            <input
+              className="loginInput"
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete="current-password"
+            />
+          </label>
+
+          <button className="loginButton" type="submit">
+            Login
+          </button>
+        </form>
+
+        <p className="loginHint">
+          Try: <span className="loginHintStrong">oliviaw</span> /{" "}
+          <span className="loginHintStrong">oliviawpass</span>
+        </p>
+      </div>
     </div>
   );
 }
