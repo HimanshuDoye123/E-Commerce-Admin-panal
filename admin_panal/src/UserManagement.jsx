@@ -1,10 +1,8 @@
-import { useEffect, useState, useContext } from "react";
-import { AuthContext } from "./AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Navbar from "./Navbar";
+import "./UserManagement.css"
 
 export default function UserManagement() {
-  const { logout } = useContext(AuthContext);
-  const navigate = useNavigate();
 
   const [users, setUsers] = useState([]);
   const [query, setQuery] = useState("");
@@ -34,32 +32,13 @@ export default function UserManagement() {
     fetchUsers();
   }, [page, query, filter]);
 
-  const handleLogout = () => {
-    logout();
-    navigate("/");
-  };
-
-  const goToDashboard = () => {
-    navigate("/dashboard");
-  };
 
   const totalPages = Math.ceil(total / limit);
 
   return (
     <div style={{ padding: "20px" }}>
       
-      <div
-        style={{
-          position: "absolute",
-          top: "20px",
-          right: "30px",
-          display: "flex",
-          gap: "10px",
-        }}
-      >
-        <button onClick={goToDashboard}>Dashboard</button>
-        <button onClick={handleLogout}>Logout</button>
-      </div>
+      <Navbar />
 
       <h2>User Management</h2>
 
@@ -121,7 +100,7 @@ export default function UserManagement() {
       </div>
 
       {/* PAGINATION */}
-      <div style={{ marginTop: "20px" }}>
+      <div style={{ marginTop: "20px" }} className="pagination">
         <button
           disabled={page === 0}
           onClick={() => setPage((p) => p - 1)}

@@ -1,12 +1,11 @@
 .dashboard-container {
   padding: 20px;
   text-align: center;
-  background-color: #f5f7fb;
+  background-color: #e7eed5;
   min-height: 100vh;
   font-family: Arial, sans-serif;
 }
 
-/* Top Right Buttons */
 .top-actions {
   position: absolute;
   top: 20px;
@@ -41,17 +40,14 @@
   background-color: #dc2626;
 }
 
-/* Title */
 .dashboard-title {
   margin-top: 10px;
 }
 
-/* Welcome */
 .welcome-text {
   color: #555;
 }
 
-/* Cards */
 .stats-wrapper {
   display: flex;
   justify-content: center;
@@ -60,7 +56,6 @@
   flex-wrap: wrap;
 }
 
-/* Chart */
 .chart-container {
   margin-top: 40px;
   background: white;
