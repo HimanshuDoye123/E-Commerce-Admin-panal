@@ -4,6 +4,7 @@ import Login from "./Login";
 import Dashboard from "./Dashboard";
 import ProtectedRoute from "./ProtectedRoute";
 import UserManagement from "./UserManagement";
+import ProductManagement from "./ProductManagement";
 
 function App() {
   return (
@@ -27,6 +28,14 @@ function App() {
                 <UserManagement />
               </ProtectedRoute>
             }
+          />
+          <Route
+           path="/products"
+           element ={
+            <ProtectedRoute>
+              <ProductManagement />
+            </ProtectedRoute>
+           }
           />
         </Routes>
       
