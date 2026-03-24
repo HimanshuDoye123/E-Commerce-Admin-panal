@@ -12,7 +12,7 @@ export default function ProductManagement() {
 
   useEffect(() => {
     fetchProducts(query, page);
-  }, [page]);
+  }, [page, query]);
 
   const fetchProducts = async (search = "", pageNo = 0) => {
     const skip = pageNo * limit;

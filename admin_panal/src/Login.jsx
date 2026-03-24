@@ -64,7 +64,7 @@ export default function Login() {
         </form>
 
         <p className="loginHint">
-          Try: <span className="loginHintStrong">oliviaw</span> /{" "}
+          Try: <span className="loginHintStrong">oliviaw</span> /
           <span className="loginHintStrong">oliviawpass</span>
         </p>
       </div>
