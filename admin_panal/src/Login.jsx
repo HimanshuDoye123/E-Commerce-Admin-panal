@@ -15,7 +15,7 @@ export default function Login() {
     const res = await fetch("https://dummyjson.com/user/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password, expiresInMins: 30 }),
+      body: JSON.stringify({ username, password}),
     });
 
     const data = await res.json();
